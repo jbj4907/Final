@@ -11,7 +11,7 @@ else{
 
     if (mysqli_query($conn, "INSERT INTO `login` (`id`, `pw`) VALUES ('$id', '$pw')")) {
         session_start();
-        $_SESSION['id'] = $ck_id;
+        $_SESSION['id'] = $id;
         $_SESSION['logged'] = 1;
         header("location:myhome.php");
     } else {
