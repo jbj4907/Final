@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 17-06-25 09:47
+-- 생성 시간: 17-06-25 10:47
 -- 서버 버전: 10.1.21-MariaDB
 -- PHP 버전: 5.6.30
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- 데이터베이스: `final`
 --
+
+CREATE DATABASE `final`;
 
 -- --------------------------------------------------------
 
@@ -72,8 +74,8 @@ INSERT INTO `widget` (`id`, `name`) VALUES
 --
 ALTER TABLE `apply_widget`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`),
-  ADD KEY `id_2` (`id`);
+  ADD KEY `widget_id` (`widget_id`),
+  ADD KEY `user` (`user`);
 
 --
 -- 테이블의 인덱스 `login`
@@ -95,7 +97,18 @@ ALTER TABLE `widget`
 -- 테이블의 AUTO_INCREMENT `apply_widget`
 --
 ALTER TABLE `apply_widget`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- 덤프된 테이블의 제약사항
+--
+
+--
+-- 테이블의 제약사항 `apply_widget`
+--
+ALTER TABLE `apply_widget`
+  ADD CONSTRAINT `apply_widget_ibfk_1` FOREIGN KEY (`widget_id`) REFERENCES `widget` (`id`),
+  ADD CONSTRAINT `apply_widget_ibfk_2` FOREIGN KEY (`user`) REFERENCES `login` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
