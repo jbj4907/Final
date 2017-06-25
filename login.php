@@ -19,7 +19,7 @@ else{
         $_SESSION['logged'] = 1;
         header("location:myhome.php");
     } else {
-        //$msg = "로그인에 실패했습니다.";
+        $msg = "로그인에 실패했습니다.";
         header("location:signin.php?msg=$msg");
     }
 }
